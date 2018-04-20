@@ -51,7 +51,22 @@ YYSYNTH_DUMMY_CLASS(UIDevice_YYAdd)
     });
     return simu;
 }
-
+- (BOOL)isIPod {
+    static dispatch_once_t one;
+    static BOOL simu;
+    dispatch_once(&one, ^{
+        simu = NSNotFound != [[self model] rangeOfString:@"iPod"].location;
+    });
+    return simu;
+}
+- (BOOL)isAppleTV {
+    static dispatch_once_t one;
+    static BOOL simu;
+    dispatch_once(&one, ^{
+        simu = NSNotFound != [[self model] rangeOfString:@"AppleTV"].location;
+    });
+    return simu;
+}
 - (BOOL)isJailbroken {
     if ([self isSimulator]) return NO; // Dont't check simulator
     
@@ -335,6 +350,7 @@ static yy_net_interface_counter yy_get_net_interface_counter() {
     });
     return name;
 }
+
 
 - (NSDate *)systemUptime {
     NSTimeInterval time = [[NSProcessInfo processInfo] systemUptime];

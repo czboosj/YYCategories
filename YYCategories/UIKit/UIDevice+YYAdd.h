@@ -33,6 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Whether the device is a simulator.
 @property (nonatomic, readonly) BOOL isSimulator;
 
+@property (nonatomic, readonly) BOOL isIPod;
+@property (nonatomic, readonly) BOOL isAppleTV;
+
 /// Whether the device is jailbroken.
 @property (nonatomic, readonly) BOOL isJailbroken;
 
